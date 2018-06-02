@@ -9,19 +9,19 @@ public class Coupon {
 	private Date startDate;
 	private Date endDate ;
 	private int amount ;
-	private String messege ;
+	private String message ;
 	private double price ;
 	private String image ;
 	private CouponType type;
 
-	public Coupon(long id, String title, Date startDate, Date endDate, int amount, String messege, double price,
+	public Coupon(long id, String title, Date startDate, Date endDate, int amount, String message, double price,
 			String image, CouponType type) {
 		this.id = id;
 		this.title = title;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.amount = amount;
-		this.messege = messege;
+		this.message = message;
 		this.price = price;
 		this.image = image;
 		this.type = type;
@@ -34,7 +34,7 @@ public class Coupon {
 	@Override
 	public String toString() {
 		return "Coupon [id=" + id + ", title=" + title + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", amount=" + amount + ", messege=" + messege + ", price=" + price + ", image=" + image + ", type="
+				+ ", amount=" + amount + ", message=" + message + ", price=" + price + ", image=" + image + ", type="
 				+ type + "]";
 	}
 
@@ -78,12 +78,12 @@ public class Coupon {
 		this.amount = amount;
 	}
 
-	public String getMessege() {
-		return messege;
+	public String getMessage() {
+		return message;
 	}
 
-	public void setMessege(String messege) {
-		this.messege = messege;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	public double getPrice() {

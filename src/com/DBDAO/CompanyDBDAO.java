@@ -123,9 +123,9 @@ public class CompanyDBDAO implements CompanyDAO {
 		
 		String query = "SELECT * FROM company WHERE id=" + id;
 		try {
-			
+		con = (Connection) cpl.getConnection();
 		ArrayList<Coupon> company_coupons = getCoupons(id);			
-		Statement st= (Statement) cpl.getConnection().createStatement();		
+		Statement st= (Statement) con.createStatement();		
 		ResultSet rs = st.executeQuery(query);
 		
 		if(rs.first()){
@@ -151,8 +151,8 @@ public class CompanyDBDAO implements CompanyDAO {
 		
 		String query = "SELECT * FROM company WHERE comp_name='" + name + "'";
 		try {
-				
-		Statement st= (Statement) cpl.getConnection().createStatement();		
+		con = (Connection) cpl.getConnection();
+		Statement st= (Statement) con.createStatement();		
 		ResultSet rs = st.executeQuery(query);
 		
 		if(rs.first()){
@@ -188,7 +188,7 @@ public class CompanyDBDAO implements CompanyDAO {
 		preparedStmt.setDate(4, new java.sql.Date(coup.getEndDate().getTime()));
 		preparedStmt.setInt(5, coup.getAmount());
 		preparedStmt.setString(6, coup.getType().name());
-		preparedStmt.setString(7, coup.getMessege());
+		preparedStmt.setString(7, coup.getMessage());
 		preparedStmt.setDouble(8, coup.getPrice());
 		preparedStmt.setString(9, coup.getImage());
 		preparedStmt.execute(); 
@@ -327,7 +327,8 @@ public class CompanyDBDAO implements CompanyDAO {
 		ArrayList<Coupon> allCoupons = new ArrayList<Coupon>();
 		
 		try{
-			Statement st = (Statement) cpl.getConnection().createStatement();
+			con = (Connection) cpl.getConnection();
+			Statement st = (Statement) con.createStatement();
 			ResultSet rs = st.executeQuery(query);
 			
 			while(rs.next()){
@@ -352,7 +353,8 @@ public class CompanyDBDAO implements CompanyDAO {
 	public boolean login(String compName, String password) throws ConnectionException, DatabaseException {
 		Connection con = null;
 		try {
-			Statement st = (Statement) cpl.getConnection().createStatement();	
+			con = (Connection) cpl.getConnection();
+			Statement st = (Statement) con.createStatement();	
 			ResultSet rs = st.executeQuery("SELECT * FROM company WHERE comp_name='" + compName + "' AND password='" + password + "'");
 			if(rs.first())
 				return true;			

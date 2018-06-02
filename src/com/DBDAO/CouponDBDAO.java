@@ -43,7 +43,7 @@ public class CouponDBDAO implements CouponDAO {
 		preparedStmt.setDate(4, new java.sql.Date(coup.getEndDate().getTime()));
 		preparedStmt.setInt(5, coup.getAmount());
 		preparedStmt.setString(6, coup.getType().name());
-		preparedStmt.setString(7, coup.getMessege());
+		preparedStmt.setString(7, coup.getMessage());
 		preparedStmt.setDouble(8, coup.getPrice());
 		preparedStmt.setString(9, coup.getImage());
 		preparedStmt.execute(); 
